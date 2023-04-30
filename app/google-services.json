@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "489861033679",
+    "firebase_url": "https://gradletest-81cdc-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "gradletest-81cdc",
+    "storage_bucket": "gradletest-81cdc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489861033679:android:142e9829fbb2501bdf51ba",
+        "android_client_info": {
+          "package_name": "com.example.gradletest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489861033679-92lov76094hkrtaetiopadqb7lk4l9eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu8evnm3x9WBWOpkQcDx5faEQM_6BwtRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489861033679-92lov76094hkrtaetiopadqb7lk4l9eg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
