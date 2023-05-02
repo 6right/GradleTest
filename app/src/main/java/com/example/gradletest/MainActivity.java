@@ -35,28 +35,28 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-                mDatabaseRef.child("value").setValue(editText.getText().toString());
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+                    mDatabaseRef.child("value").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            // Получаем новое значение и устанавливаем его в textView
+                            String value = dataSnapshot.getValue(String.class);
+                            Log.d(TAG, "Value is: " + value);
+                            textView.setText(value);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Обработка ошибки чтения данных
+                            Log.w(TAG, "Failed to read value.", error.toException());
+                        }
+                    });
+                }
+            });
 
         // Добавляем слушатель событий ValueEventListener к mDatabaseRef
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-        mDatabaseRef.child("value").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Получаем новое значение и устанавливаем его в textView
-                String value = dataSnapshot.getValue(String.class);
-                textView.setText(value);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Обработка ошибки чтения данных
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
     }
 }
