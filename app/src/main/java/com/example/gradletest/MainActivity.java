@@ -20,43 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText editText;
-    private TextView textView;
-    private Button button;
-    DatabaseReference mDatabaseRef;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        editText = findViewById(R.id.editText);
-        textView = findViewById(R.id.textView);
-        button = findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-                    mDatabaseRef.child("value").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            // Получаем новое значение и устанавливаем его в textView
-                            String value = dataSnapshot.getValue(String.class);
-                            Log.d(TAG, "Value is: " + value);
-                            textView.setText(value);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            // Обработка ошибки чтения данных
-                            Log.w(TAG, "Failed to read value.", error.toException());
-                        }
-                    });
-                }
-            });
-
-        // Добавляем слушатель событий ValueEventListener к mDatabaseRef
-
+        Game game = new Game(this);
+        setContentView(game);
     }
 }
